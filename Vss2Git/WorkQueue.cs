@@ -32,10 +32,16 @@ namespace Hpdi.Vss2Git
         private readonly Dictionary<object, string> workStatuses = new Dictionary<object, string>();
         private object lastStatusWork;
         private string lastStatus;
+        private int lastProgress;
 
         public string LastStatus
         {
             get { return lastStatus; }
+        }
+
+        public int LastProgress
+        {
+            get { return lastProgress;  }
         }
 
         public WorkQueue()
@@ -110,9 +116,15 @@ namespace Hpdi.Vss2Git
             }
         }
 
+        public void SetProgress(int progress)
+        {
+            lastProgress = progress;
+        }
+
         public void ClearStatus(object work)
         {
             SetStatus(work, null);
+            SetProgress(0);
         }
 
         protected override void OnActive()
@@ -170,6 +182,7 @@ namespace Hpdi.Vss2Git
             {
                 lastStatusWork = null;
                 lastStatus = null;
+                lastProgress = 0;
 
                 foreach (var entry in workStatuses)
                 {

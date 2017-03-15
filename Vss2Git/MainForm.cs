@@ -143,6 +143,7 @@ namespace Hpdi.Vss2Git
 
         private void statusTimer_Tick(object sender, EventArgs e)
         {
+            progressBar1.Value = workQueue.LastProgress;
             statusLabel.Text = workQueue.LastStatus ?? "Idle";
             timeLabel.Text = string.Format("Elapsed: {0:HH:mm:ss}",
                 new DateTime(workQueue.ActiveTime.Ticks));
@@ -156,6 +157,8 @@ namespace Hpdi.Vss2Git
             if (changesetBuilder != null)
             {
                 changeLabel.Text = "Changesets: " + changesetBuilder.Changesets.Count;
+                progressBar1.Maximum = changesetBuilder.Changesets.Count;
+                progressBar1.Visible = true;
             }
 
             if (workQueue.IsIdle)
@@ -165,6 +168,7 @@ namespace Hpdi.Vss2Git
 
                 statusTimer.Enabled = false;
                 goButton.Enabled = true;
+                progressBar1.Visible = false;
             }
 
             var exceptions = workQueue.FetchExceptions();
