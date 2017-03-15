@@ -142,5 +142,29 @@ namespace Hpdi.Vss2Git.Properties {
                 this["ForceAnnotatedTags"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PathMappingPattern {
+            get {
+                return ((string)(this["PathMappingPattern"]));
+            }
+            set {
+                this["PathMappingPattern"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("$1")]
+        public string PathReplacement {
+            get {
+                return ((string)(this["PathReplacement"]));
+            }
+            set {
+                this["PathReplacement"] = value;
+            }
+        }
     }
 }

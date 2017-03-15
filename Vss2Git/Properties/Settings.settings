@@ -32,5 +32,11 @@
     <Setting Name="ForceAnnotatedTags" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="PathMappingPattern" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PathReplacement" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -77,7 +77,7 @@ namespace Hpdi.Vss2Git
             this.changesetBuilder = changesetBuilder;
         }
 
-        public void ExportToGit(string repoPath)
+        public void ExportToGit(string repoPath, string mappingPattern, string mappingReplacement)
         {
             workQueue.AddLast(delegate(object work)
             {
@@ -127,6 +127,7 @@ namespace Hpdi.Vss2Git
                 foreach (var rootProject in revisionAnalyzer.RootProjects)
                 {
                     var rootPath = VssPathMapper.GetWorkingPath(repoPath, rootProject.Path);
+                    rootPath = ApplyPathMapping(repoPath, rootPath, mappingPattern, mappingReplacement);
                     pathMapper.SetProjectPath(rootProject.PhysicalName, rootPath, rootProject.Path);
                 }
 
@@ -236,6 +237,16 @@ namespace Hpdi.Vss2Git
                 logger.WriteLine("Git commits: {0}", commitCount);
                 logger.WriteLine("Git tags: {0}", tagCount);
             });
+        }
+
+        private static string ApplyPathMapping(string repoPath, string sourcePath, string mappingPattern, string mappingReplacement)
+        {
+            if (String.IsNullOrEmpty(mappingPattern))
+                return sourcePath;
+            string targetPath = Regex.Replace(sourcePath, mappingPattern, mappingReplacement);
+            if (!targetPath.StartsWith(repoPath, StringComparison.CurrentCultureIgnoreCase))
+                targetPath = Path.Combine(repoPath, targetPath);
+            return targetPath;
         }
 
         private bool ReplayChangeset(VssPathMapper pathMapper, Changeset changeset,

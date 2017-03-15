@@ -117,7 +117,7 @@ namespace Hpdi.Vss2Git
                 return false;
             }
 
-            var args = new StringBuilder("add -- ");
+            var args = new StringBuilder("add -f -- ");
             CollectionUtil.Join(args, " ", CollectionUtil.Transform<string, string>(paths, Quote));
             var startInfo = GetStartInfo(args.ToString());
 
@@ -140,7 +140,7 @@ namespace Hpdi.Vss2Git
 
         public void Move(string sourcePath, string destPath)
         {
-            GitExec("mv -- " + Quote(sourcePath) + " " + Quote(destPath));
+            GitExec("mv -f -- " + Quote(sourcePath) + " " + Quote(destPath));
         }
 
         class TempFile : IDisposable

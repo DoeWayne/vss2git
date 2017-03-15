@@ -118,7 +118,7 @@ namespace Hpdi.Vss2Git
                         gitExporter.CommitEncoding = encoding;
                     }
                     gitExporter.IgnoreErrors = ignoreErrorsCheckBox.Checked;
-                    gitExporter.ExportToGit(outDirTextBox.Text);
+                    gitExporter.ExportToGit(outDirTextBox.Text, pathMapFromCombobox.Text, pathMapToTextbox.Text);
                 }
 
                 workQueue.Idle += delegate
@@ -233,6 +233,8 @@ namespace Hpdi.Vss2Git
             forceAnnotatedCheckBox.Checked = settings.ForceAnnotatedTags;
             anyCommentUpDown.Value = settings.AnyCommentSeconds;
             sameCommentUpDown.Value = settings.SameCommentSeconds;
+            pathMapFromCombobox.Text = settings.PathMappingPattern;
+            pathMapToTextbox.Text = settings.PathReplacement;
         }
 
         private void WriteSettings()
@@ -248,6 +250,8 @@ namespace Hpdi.Vss2Git
             settings.ForceAnnotatedTags = forceAnnotatedCheckBox.Checked;
             settings.AnyCommentSeconds = (int)anyCommentUpDown.Value;
             settings.SameCommentSeconds = (int)sameCommentUpDown.Value;
+            settings.PathMappingPattern = pathMapFromCombobox.Text;
+            settings.PathReplacement = pathMapToTextbox.Text;
             settings.Save();
         }
     }
