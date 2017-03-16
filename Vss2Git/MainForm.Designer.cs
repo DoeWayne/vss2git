@@ -70,6 +70,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.anyCommentUpDown = new System.Windows.Forms.NumericUpDown();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.vssGroupBox.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.outputGroupBox.SuspendLayout();
@@ -338,6 +339,7 @@
             this.domainTextBox.Name = "domainTextBox";
             this.domainTextBox.Size = new System.Drawing.Size(473, 20);
             this.domainTextBox.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.domainTextBox, "Will be added to the user name if user cannot be found in file emails.txt.");
             // 
             // domainLabel
             // 
@@ -561,6 +563,7 @@
         private System.Windows.Forms.Label pathMapToLabel;
         private System.Windows.Forms.ComboBox pathMapFromCombobox;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

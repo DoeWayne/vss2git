@@ -40,6 +40,7 @@ namespace Hpdi.Vss2Git
         private readonly StreamCopier streamCopier = new StreamCopier();
         private readonly HashSet<string> tagsUsed = new HashSet<string>();
         private bool ignoreErrors = false;
+        private Lazy<EmailMapper> EmailMapper = new Lazy<EmailMapper>();
 
         private string emailDomain = "localhost";
         public string EmailDomain
@@ -645,8 +646,8 @@ namespace Hpdi.Vss2Git
 
         private string GetEmail(string user)
         {
-            // TODO: user-defined mapping of user names to email addresses
-            return user.ToLower().Replace(' ', '.') + "@" + emailDomain;
+            var email = EmailMapper.Value.GetEmail(user, emailDomain);
+            return email;
         }
 
         private string GetTagFromLabel(string label)

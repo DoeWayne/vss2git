@@ -1,0 +1,4 @@
+﻿# This file allows mapping user accounts to email adresses. 
+# Spaces in accounts are replaced by dots. Spaces in this file around accounts/emails are ignored.
+# Example:
+# abc = Arnold@mycompany.com

@@ -68,6 +68,7 @@
     <Compile Include="AsyncLineReader.cs" />
     <Compile Include="CollectionUtil.cs" />
     <Compile Include="ChangesetBuilder.cs" />
+    <Compile Include="EmailMapper.cs" />
     <Compile Include="ProcessException.cs" />
     <Compile Include="ExceptionFormatter.cs">
     </Compile>
@@ -129,6 +130,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="emails.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="FodyWeavers.xml" />
     <Content Include="Vss2Git.ico" />
     <Content Include="Vss2Git32.ico" />
