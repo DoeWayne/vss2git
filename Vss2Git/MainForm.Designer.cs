@@ -71,6 +71,7 @@
             this.anyCommentUpDown = new System.Windows.Forms.NumericUpDown();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.analyzeButton = new System.Windows.Forms.Button();
             this.vssGroupBox.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.outputGroupBox.SuspendLayout();
@@ -178,7 +179,7 @@
             this.goButton.Location = new System.Drawing.Point(418, 410);
             this.goButton.Name = "goButton";
             this.goButton.Size = new System.Drawing.Size(75, 23);
-            this.goButton.TabIndex = 0;
+            this.goButton.TabIndex = 1;
             this.goButton.Text = "Go!";
             this.goButton.UseVisualStyleBackColor = true;
             this.goButton.Click += new System.EventHandler(this.goButton_Click);
@@ -393,7 +394,7 @@
             this.cancelButton.Location = new System.Drawing.Point(499, 410);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
+            this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -481,9 +482,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.Location = new System.Drawing.Point(12, 410);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(385, 23);
+            this.progressBar1.Size = new System.Drawing.Size(309, 23);
             this.progressBar1.TabIndex = 6;
             this.progressBar1.Visible = false;
+            // 
+            // analyzeButton
+            // 
+            this.analyzeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.analyzeButton.Location = new System.Drawing.Point(335, 410);
+            this.analyzeButton.Name = "analyzeButton";
+            this.analyzeButton.Size = new System.Drawing.Size(77, 23);
+            this.analyzeButton.TabIndex = 0;
+            this.analyzeButton.Text = "Analyze";
+            this.analyzeButton.UseVisualStyleBackColor = true;
+            this.analyzeButton.Click += new System.EventHandler(this.analyzeButton_Click);
             // 
             // MainForm
             // 
@@ -492,6 +504,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(584, 458);
+            this.Controls.Add(this.analyzeButton);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.changesetGroupBox);
             this.Controls.Add(this.cancelButton);
@@ -564,6 +577,7 @@
         private System.Windows.Forms.ComboBox pathMapFromCombobox;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button analyzeButton;
     }
 }
 

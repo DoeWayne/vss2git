@@ -258,5 +258,14 @@ namespace Hpdi.Vss2Git
             settings.PathReplacement = pathMapToTextbox.Text;
             settings.Save();
         }
+
+        private void analyzeButton_Click(object sender, EventArgs e)
+        {
+            using (var form = new VssAnalyze.AnalyzeForm())
+            {
+                form.VssRepoPath = vssDirTextBox.Text;
+                form.ShowDialog();
+            }
+        }
     }
 }
