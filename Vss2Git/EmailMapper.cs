@@ -19,7 +19,7 @@ namespace Hpdi.Vss2Git
 
         public EmailMapper()
         {
-            ReadDictionaryFile(Path.Combine(EmailMapper.AssemblyDirectory, MappingFile));
+            Map = ReadDictionaryFile(Path.Combine(EmailMapper.AssemblyDirectory, MappingFile));
         }
 
         /// <summary>
@@ -29,6 +29,8 @@ namespace Hpdi.Vss2Git
         /// <returns></returns>
         public string GetEmail(string account, string domain = null)
         {
+            if (String.IsNullOrWhiteSpace(account))
+                return null;
             account = account.ToLower().Replace(' ', '.');
             string email;
             if (!Map.TryGetValue(account, out email))
