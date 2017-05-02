@@ -41,6 +41,8 @@ namespace Hpdi.Vss2Git
         private IDictionary<string, string> ReadDictionaryFile(string filePath)
         {
             var dictionary = new Dictionary<string, string>();
+            if (!File.Exists(filePath))
+                return dictionary;
             foreach (string line in File.ReadAllLines(filePath))
             {
                 // read lines that contain a '=' sign and skip comment lines starting with a '#'
@@ -49,7 +51,7 @@ namespace Hpdi.Vss2Git
                     (line.Contains("=")))
                 {
                     int index = line.IndexOf('=');
-                    string key = line.Substring(0, index).Trim();
+                    string key = line.Substring(0, index).Trim().ToLower();
                     string value = line.Substring(index + 1).Trim();
                     dictionary.Add(key, value);
                 }
