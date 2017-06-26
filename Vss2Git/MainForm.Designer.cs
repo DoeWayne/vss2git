@@ -49,6 +49,8 @@
             this.timeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.outputGroupBox = new System.Windows.Forms.GroupBox();
             this.ignoreErrorsCheckBox = new System.Windows.Forms.CheckBox();
+            this.commentTextBox = new System.Windows.Forms.TextBox();
+            this.commentLabel = new System.Windows.Forms.Label();
             this.pathMapFromCombobox = new System.Windows.Forms.ComboBox();
             this.pathMapToTextbox = new System.Windows.Forms.TextBox();
             this.pathMapToLabel = new System.Windows.Forms.Label();
@@ -114,18 +116,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.encodingComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.encodingComboBox.FormattingEnabled = true;
-            this.encodingComboBox.Location = new System.Drawing.Point(81, 97);
+            this.encodingComboBox.Location = new System.Drawing.Point(94, 97);
             this.encodingComboBox.Name = "encodingComboBox";
-            this.encodingComboBox.Size = new System.Drawing.Size(473, 21);
+            this.encodingComboBox.Size = new System.Drawing.Size(460, 21);
             this.encodingComboBox.TabIndex = 3;
             // 
             // excludeTextBox
             // 
             this.excludeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.excludeTextBox.Location = new System.Drawing.Point(81, 71);
+            this.excludeTextBox.Location = new System.Drawing.Point(94, 71);
             this.excludeTextBox.Name = "excludeTextBox";
-            this.excludeTextBox.Size = new System.Drawing.Size(473, 20);
+            this.excludeTextBox.Size = new System.Drawing.Size(460, 20);
             this.excludeTextBox.TabIndex = 2;
             // 
             // excludeLabel
@@ -141,18 +143,18 @@
             // 
             this.vssProjectTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.vssProjectTextBox.Location = new System.Drawing.Point(81, 45);
+            this.vssProjectTextBox.Location = new System.Drawing.Point(94, 45);
             this.vssProjectTextBox.Name = "vssProjectTextBox";
-            this.vssProjectTextBox.Size = new System.Drawing.Size(473, 20);
+            this.vssProjectTextBox.Size = new System.Drawing.Size(460, 20);
             this.vssProjectTextBox.TabIndex = 1;
             // 
             // vssDirTextBox
             // 
             this.vssDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.vssDirTextBox.Location = new System.Drawing.Point(81, 19);
+            this.vssDirTextBox.Location = new System.Drawing.Point(94, 19);
             this.vssDirTextBox.Name = "vssDirTextBox";
-            this.vssDirTextBox.Size = new System.Drawing.Size(473, 20);
+            this.vssDirTextBox.Size = new System.Drawing.Size(460, 20);
             this.vssDirTextBox.TabIndex = 0;
             // 
             // vssProjectLabel
@@ -175,8 +177,8 @@
             // 
             // goButton
             // 
-            this.goButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.goButton.Location = new System.Drawing.Point(418, 410);
+            this.goButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.goButton.Location = new System.Drawing.Point(418, 438);
             this.goButton.Name = "goButton";
             this.goButton.Size = new System.Drawing.Size(75, 23);
             this.goButton.TabIndex = 1;
@@ -196,7 +198,7 @@
             this.revisionLabel,
             this.changeLabel,
             this.timeLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 436);
+            this.statusStrip.Location = new System.Drawing.Point(0, 464);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(584, 22);
             this.statusStrip.TabIndex = 5;
@@ -239,6 +241,8 @@
             this.outputGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputGroupBox.Controls.Add(this.ignoreErrorsCheckBox);
+            this.outputGroupBox.Controls.Add(this.commentTextBox);
+            this.outputGroupBox.Controls.Add(this.commentLabel);
             this.outputGroupBox.Controls.Add(this.pathMapFromCombobox);
             this.outputGroupBox.Controls.Add(this.pathMapToTextbox);
             this.outputGroupBox.Controls.Add(this.pathMapToLabel);
@@ -253,7 +257,7 @@
             this.outputGroupBox.Controls.Add(this.logLabel);
             this.outputGroupBox.Location = new System.Drawing.Point(12, 144);
             this.outputGroupBox.Name = "outputGroupBox";
-            this.outputGroupBox.Size = new System.Drawing.Size(560, 179);
+            this.outputGroupBox.Size = new System.Drawing.Size(560, 207);
             this.outputGroupBox.TabIndex = 1;
             this.outputGroupBox.TabStop = false;
             this.outputGroupBox.Text = "Output Settings";
@@ -261,13 +265,32 @@
             // ignoreErrorsCheckBox
             // 
             this.ignoreErrorsCheckBox.AutoSize = true;
-            this.ignoreErrorsCheckBox.Location = new System.Drawing.Point(421, 150);
+            this.ignoreErrorsCheckBox.Location = new System.Drawing.Point(418, 184);
             this.ignoreErrorsCheckBox.Name = "ignoreErrorsCheckBox";
             this.ignoreErrorsCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ignoreErrorsCheckBox.Size = new System.Drawing.Size(101, 17);
-            this.ignoreErrorsCheckBox.TabIndex = 7;
+            this.ignoreErrorsCheckBox.TabIndex = 8;
             this.ignoreErrorsCheckBox.Text = "Ignore Git errors";
             this.ignoreErrorsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // commentTextBox
+            // 
+            this.commentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.commentTextBox.Location = new System.Drawing.Point(94, 130);
+            this.commentTextBox.Name = "commentTextBox";
+            this.commentTextBox.Size = new System.Drawing.Size(460, 20);
+            this.commentTextBox.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.commentTextBox, "Used if VSS has no comment.");
+            // 
+            // commentLabel
+            // 
+            this.commentLabel.AutoSize = true;
+            this.commentLabel.Location = new System.Drawing.Point(6, 133);
+            this.commentLabel.Name = "commentLabel";
+            this.commentLabel.Size = new System.Drawing.Size(87, 13);
+            this.commentLabel.TabIndex = 8;
+            this.commentLabel.Text = "Default comment";
             // 
             // pathMapFromCombobox
             // 
@@ -276,18 +299,18 @@
             this.pathMapFromCombobox.FormattingEnabled = true;
             this.pathMapFromCombobox.Items.AddRange(new object[] {
             "^.*?([^\\\\]*)$(?# captures last directory name)"});
-            this.pathMapFromCombobox.Location = new System.Drawing.Point(81, 44);
+            this.pathMapFromCombobox.Location = new System.Drawing.Point(94, 44);
             this.pathMapFromCombobox.Name = "pathMapFromCombobox";
-            this.pathMapFromCombobox.Size = new System.Drawing.Size(473, 21);
+            this.pathMapFromCombobox.Size = new System.Drawing.Size(460, 21);
             this.pathMapFromCombobox.TabIndex = 1;
             // 
             // pathMapToTextbox
             // 
             this.pathMapToTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pathMapToTextbox.Location = new System.Drawing.Point(81, 71);
+            this.pathMapToTextbox.Location = new System.Drawing.Point(94, 71);
             this.pathMapToTextbox.Name = "pathMapToTextbox";
-            this.pathMapToTextbox.Size = new System.Drawing.Size(473, 20);
+            this.pathMapToTextbox.Size = new System.Drawing.Size(460, 20);
             this.pathMapToTextbox.TabIndex = 2;
             // 
             // pathMapToLabel
@@ -313,10 +336,10 @@
             this.forceAnnotatedCheckBox.AutoSize = true;
             this.forceAnnotatedCheckBox.Checked = true;
             this.forceAnnotatedCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.forceAnnotatedCheckBox.Location = new System.Drawing.Point(224, 150);
+            this.forceAnnotatedCheckBox.Location = new System.Drawing.Point(221, 184);
             this.forceAnnotatedCheckBox.Name = "forceAnnotatedCheckBox";
             this.forceAnnotatedCheckBox.Size = new System.Drawing.Size(191, 17);
-            this.forceAnnotatedCheckBox.TabIndex = 6;
+            this.forceAnnotatedCheckBox.TabIndex = 7;
             this.forceAnnotatedCheckBox.Text = "Force use of annotated tag objects";
             this.forceAnnotatedCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -325,10 +348,10 @@
             this.transcodeCheckBox.AutoSize = true;
             this.transcodeCheckBox.Checked = true;
             this.transcodeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.transcodeCheckBox.Location = new System.Drawing.Point(9, 150);
+            this.transcodeCheckBox.Location = new System.Drawing.Point(6, 184);
             this.transcodeCheckBox.Name = "transcodeCheckBox";
             this.transcodeCheckBox.Size = new System.Drawing.Size(209, 17);
-            this.transcodeCheckBox.TabIndex = 5;
+            this.transcodeCheckBox.TabIndex = 6;
             this.transcodeCheckBox.Text = "Transcode commit comments to UTF-8";
             this.transcodeCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -336,9 +359,9 @@
             // 
             this.domainTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.domainTextBox.Location = new System.Drawing.Point(81, 99);
+            this.domainTextBox.Location = new System.Drawing.Point(94, 99);
             this.domainTextBox.Name = "domainTextBox";
-            this.domainTextBox.Size = new System.Drawing.Size(473, 20);
+            this.domainTextBox.Size = new System.Drawing.Size(460, 20);
             this.domainTextBox.TabIndex = 3;
             this.toolTip1.SetToolTip(this.domainTextBox, "Will be added to the user name if user cannot be found in file emails.txt.");
             // 
@@ -355,9 +378,9 @@
             // 
             this.outDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.outDirTextBox.Location = new System.Drawing.Point(81, 19);
+            this.outDirTextBox.Location = new System.Drawing.Point(94, 19);
             this.outDirTextBox.Name = "outDirTextBox";
-            this.outDirTextBox.Size = new System.Drawing.Size(473, 20);
+            this.outDirTextBox.Size = new System.Drawing.Size(460, 20);
             this.outDirTextBox.TabIndex = 0;
             // 
             // outDirLabel
@@ -373,15 +396,15 @@
             // 
             this.logTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.logTextBox.Location = new System.Drawing.Point(81, 125);
+            this.logTextBox.Location = new System.Drawing.Point(94, 158);
             this.logTextBox.Name = "logTextBox";
-            this.logTextBox.Size = new System.Drawing.Size(473, 20);
-            this.logTextBox.TabIndex = 4;
+            this.logTextBox.Size = new System.Drawing.Size(460, 20);
+            this.logTextBox.TabIndex = 5;
             // 
             // logLabel
             // 
             this.logLabel.AutoSize = true;
-            this.logLabel.Location = new System.Drawing.Point(6, 128);
+            this.logLabel.Location = new System.Drawing.Point(6, 161);
             this.logLabel.Name = "logLabel";
             this.logLabel.Size = new System.Drawing.Size(41, 13);
             this.logLabel.TabIndex = 4;
@@ -389,9 +412,9 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(499, 410);
+            this.cancelButton.Location = new System.Drawing.Point(499, 438);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 2;
@@ -409,7 +432,7 @@
             this.changesetGroupBox.Controls.Add(this.label2);
             this.changesetGroupBox.Controls.Add(this.label1);
             this.changesetGroupBox.Controls.Add(this.anyCommentUpDown);
-            this.changesetGroupBox.Location = new System.Drawing.Point(12, 329);
+            this.changesetGroupBox.Location = new System.Drawing.Point(12, 357);
             this.changesetGroupBox.Name = "changesetGroupBox";
             this.changesetGroupBox.Size = new System.Drawing.Size(560, 75);
             this.changesetGroupBox.TabIndex = 2;
@@ -478,9 +501,9 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(12, 410);
+            this.progressBar1.Location = new System.Drawing.Point(12, 438);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(309, 23);
             this.progressBar1.TabIndex = 6;
@@ -489,7 +512,7 @@
             // analyzeButton
             // 
             this.analyzeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.analyzeButton.Location = new System.Drawing.Point(335, 410);
+            this.analyzeButton.Location = new System.Drawing.Point(335, 438);
             this.analyzeButton.Name = "analyzeButton";
             this.analyzeButton.Size = new System.Drawing.Size(77, 23);
             this.analyzeButton.TabIndex = 0;
@@ -503,7 +526,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(584, 458);
+            this.ClientSize = new System.Drawing.Size(584, 486);
             this.Controls.Add(this.analyzeButton);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.changesetGroupBox);
@@ -571,6 +594,8 @@
         private System.Windows.Forms.CheckBox transcodeCheckBox;
         private System.Windows.Forms.CheckBox forceAnnotatedCheckBox;
         private System.Windows.Forms.CheckBox ignoreErrorsCheckBox;
+        private System.Windows.Forms.TextBox commentTextBox;
+        private System.Windows.Forms.Label commentLabel;
         private System.Windows.Forms.Label pathRegexLabel;
         private System.Windows.Forms.TextBox pathMapToTextbox;
         private System.Windows.Forms.Label pathMapToLabel;
