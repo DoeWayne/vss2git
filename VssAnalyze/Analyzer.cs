@@ -20,7 +20,7 @@ namespace VssAnalyze
             var analyzeExePath = Path.Combine(appPath, "Microsoft Visual SourceSafe\\analyze.exe");
             if (!File.Exists(analyzeExePath))
             {
-                throw new FileNotFoundException("Could not find VSS tool ANNALYZE.EXE.");
+                throw new FileNotFoundException("Could not find VSS tool ANALYZE.EXE.");
             }
             return analyzeExePath;
         }
