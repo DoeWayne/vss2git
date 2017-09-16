@@ -19,6 +19,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Hpdi.VssLogicalLib;
+using NDesk.Options;
 
 namespace Hpdi.Vss2Git
 {
@@ -33,6 +34,7 @@ namespace Hpdi.Vss2Git
         private Logger logger = Logger.Null;
         private RevisionAnalyzer revisionAnalyzer;
         private ChangesetBuilder changesetBuilder;
+        private Boolean autostart = false;
 
         public MainForm()
         {
@@ -175,6 +177,14 @@ namespace Hpdi.Vss2Git
                 statusTimer.Enabled = false;
                 goButton.Enabled = true;
                 progressBar1.Visible = false;
+                string[] args = Environment.GetCommandLineArgs();
+
+                if (autostart)
+                {
+                    {
+                        Application.Exit();
+                    }
+                }
             }
 
             var exceptions = workQueue.FetchExceptions();
@@ -220,6 +230,61 @@ namespace Hpdi.Vss2Git
             }
 
             ReadSettings();
+            CheckArguments();
+        }
+
+        private void CheckArguments()
+        {
+            bool show_help = false;
+            List<string> extra;
+            string[] args = Environment.GetCommandLineArgs();
+            var arguments = new OptionSet()
+            {
+                { "a|VssDir=", "The directory of visual source safe location", v => vssDirTextBox.Text = v },
+                { "b|VssProj=", "The project path inside visual source safe", v => vssProjectTextBox.Text = v },
+                { "c|VssExcludes=", "Files to exclude", v => excludeTextBox.Text = v },
+                { "d|OutDir=", "The output directory location", v => outDirTextBox.Text = v },
+                { "e|PathRegex=", "Path regex", v => pathMapFromCombobox.Text = v },
+                { "f|MapTo=", "Map to", v => pathMapToTextbox.Text = v },
+                { "g|EmailDomain=", "The email domain to use for usernames", v => domainTextBox.Text = v },
+                { "h|DefaultComment=", "Default comment for blank commits", v => commentTextBox.Text = v },
+                { "i|LogFile=", "File/path of the output log file", v => logTextBox.Text = v },
+                { "j|Trans=", "Option to transcode comments to UTF-8", v => transcodeCheckBox.Checked = (v == "True") ? true : false },
+                { "k|Annotate=", "Option to force use of annotated tag objects", v => forceAnnotatedCheckBox.Checked = (v == "True") ? true : false },
+                { "l|IgnoreGitErr=", "Option to ignore errors from Git", v => ignoreErrorsCheckBox.Checked = (v == "True") ? true : false },
+                { "m|CombAnySecs=", "Number of seconds between any revision to combine", (int v) => anyCommentUpDown.Value = v },
+                { "n|CombSameSecs=", "Number of seconds between revisions with same comment to combine", (int v) => sameCommentUpDown.Value = v },
+                { "o|help",  "show this message and exit", v => show_help = v != null },
+                { "x",  "Autostart/close", v => autostart = v != null }
+            };
+            //{ "x|Autostart=", "Path regex", v => logTextBox.Text = v }
+
+            try
+            {
+                extra = arguments.Parse (args);
+            }
+            catch (OptionException e)
+            {
+                MessageBox.Show(e.Message, "Help", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                return;
+            }
+
+            if (show_help)
+            {
+                ShowHelp(arguments);
+            }
+
+            // arguments 14 - autostart
+            if (autostart)
+            {
+                goButton.PerformClick();
+            }
+        }
+
+        private static void ShowHelp(OptionSet arguments)
+        {
+            Help help = new Help();
+            help.ShowHelp(arguments);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -246,6 +311,7 @@ namespace Hpdi.Vss2Git
             sameCommentUpDown.Value = settings.SameCommentSeconds;
             pathMapFromCombobox.Text = settings.PathMappingPattern;
             pathMapToTextbox.Text = settings.PathReplacement;
+            ignoreErrorsCheckBox.Checked = settings.IgnoreErrorsGit;
         }
 
         private void WriteSettings()
@@ -263,6 +329,7 @@ namespace Hpdi.Vss2Git
             settings.SameCommentSeconds = (int)sameCommentUpDown.Value;
             settings.PathMappingPattern = pathMapFromCombobox.Text;
             settings.PathReplacement = pathMapToTextbox.Text;
+            settings.IgnoreErrorsGit = ignoreErrorsCheckBox.Checked;
             settings.Save();
         }
 
